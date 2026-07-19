@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Shruti Kumari | Aspiring Data Scientist</title>
+    <title>Shruti Kumari | Assistant Professor & AI Researcher</title>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Lato:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #003366;
-            --secondary: #F0F0F0;
+            --secondary: #F8F9FA;
             --accent: #008080;
             --text-dark: #333333;
             --text-light: #FFFFFF;
@@ -19,6 +22,10 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -60,6 +67,10 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .logo span {
             color: var(--accent);
         }
 
@@ -69,7 +80,7 @@
         }
 
         .nav-links li {
-            margin-left: 20px;
+            margin-left: 25px;
         }
 
         .nav-links a {
@@ -77,6 +88,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover {
@@ -85,13 +97,15 @@
 
         .btn {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 10px 25px;
             background-color: var(--accent);
             color: var(--text-light);
             text-decoration: none;
             border-radius: 5px;
             font-weight: 500;
             transition: var(--transition);
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -101,20 +115,21 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,51,102,0.8), rgba(0,51,102,0.8)), url('https://via.placeholder.com/1920x800') no-repeat center center;
+            background: linear-gradient(rgba(0,51,102,0.85), rgba(0,51,102,0.9)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') no-repeat center center;
             background-size: cover;
             color: var(--text-light);
-            padding: 100px 0;
+            padding: 120px 0;
             text-align: center;
         }
 
-        .hero img {
-            width: 200px;
-            height: 200px;
+        .hero-img {
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--accent);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            background-color: #ddd; /* Fallback if image is missing */
         }
 
         .hero h1 {
@@ -122,10 +137,18 @@
             margin-bottom: 10px;
         }
 
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
         .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
+            font-size: 1.1rem;
+            max-width: 700px;
             margin: 0 auto 30px;
+            opacity: 0.9;
         }
 
         /* Section Styles */
@@ -135,17 +158,20 @@
 
         section h2 {
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.5rem;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
             color: var(--primary);
+            position: relative;
         }
 
-        .section-title {
-            color: var(--accent);
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 10px auto 0;
+            border-radius: 2px;
         }
 
         /* About Section */
@@ -162,38 +188,47 @@
         }
 
         .about-text p {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
         }
 
         /* Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .skill-card {
             background-color: white;
-            padding: 20px;
+            padding: 25px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
             transition: var(--transition);
+            border-left: 4px solid var(--accent);
         }
 
         .skill-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
         .skill-card h3 {
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* Projects Section */
+        .skill-card h3 i {
+            color: var(--accent);
+        }
+
+        /* Projects & Publications Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
@@ -201,105 +236,159 @@
             background-color: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
-        .project-img {
-            height: 200px;
+        .project-header {
             background-color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             color: white;
-            font-size: 1.5rem;
-            padding: 0 15px;
-            text-align: center;
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .project-content {
-            padding: 20px;
+            padding: 25px;
+            flex-grow: 1;
         }
 
         .project-content h3 {
             color: var(--primary);
             margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .project-content p {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            color: #555;
         }
 
         .project-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 5px;
-            margin: 10px 0;
+            gap: 8px;
+            margin-bottom: 15px;
         }
 
         .tech-tag {
-            background-color: var(--accent);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 3px;
+            background-color: rgba(0, 128, 128, 0.1);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 4px;
             font-size: 0.8rem;
+            font-weight: 600;
         }
 
-        /* Education & Experience */
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .project-link:hover {
+            color: var(--accent);
+        }
+
+        /* Timeline (Experience & Education) */
         .timeline {
             position: relative;
             padding: 20px 0;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            width: 4px;
+            width: 3px;
             background-color: var(--accent);
             top: 0;
             bottom: 0;
             left: 50%;
-            margin-left: -2px;
+            margin-left: -1.5px;
         }
 
         .timeline-item {
-            padding: 20px 40px;
+            padding: 10px 40px;
             position: relative;
             width: 50%;
             box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+            top: 20px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -8px;
         }
 
         .timeline-item:nth-child(even) {
             left: 50%;
         }
 
-        .timeline-item:nth-child(odd) {
-            left: 0;
+        .timeline-item:nth-child(even)::after {
+            left: -8px;
         }
 
         .timeline-content {
             background-color: white;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
         }
 
         .timeline-content h3 {
             color: var(--primary);
             margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .timeline-content h4 {
+            color: var(--accent);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 5px;
         }
 
         .timeline-date {
-            color: var(--accent);
+            color: #666;
+            font-size: 0.85rem;
             font-weight: 500;
             margin-bottom: 10px;
+            font-style: italic;
         }
 
         /* Contact Section */
         .contact-container {
             display: flex;
-            gap: 40px;
+            gap: 50px;
             flex-wrap: wrap;
         }
 
@@ -310,24 +399,65 @@
 
         .contact-info h3 {
             color: var(--primary);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .contact-detail {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .contact-detail i {
             color: var(--accent);
-            margin-right: 10px;
+            margin-right: 15px;
+            font-size: 1.3rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        .contact-detail a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-detail a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
             font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
         }
 
         .contact-form {
             flex: 1;
             min-width: 300px;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
         }
 
         .form-group {
@@ -336,14 +466,22 @@
 
         input, textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
         }
 
         textarea {
             min-height: 150px;
+            resize: vertical;
         }
 
         /* Footer */
@@ -351,18 +489,22 @@
             background-color: var(--primary);
             color: var(--text-light);
             text-align: center;
-            padding: 20px 0;
+            padding: 25px 0;
             margin-top: 50px;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
-                display: none;
+                display: none; /* Can be enhanced with a hamburger menu later */
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
             }
 
             .about-content, .contact-container {
@@ -370,18 +512,24 @@
             }
 
             .timeline::before {
-                left: 31px;
+                left: 20px;
             }
 
             .timeline-item {
                 width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
+                padding-left: 50px;
+                padding-right: 0;
                 left: 0;
+                text-align: left;
             }
 
             .timeline-item:nth-child(even) {
                 left: 0;
+            }
+
+            .timeline-item::after {
+                left: 12px !important;
+                right: auto !important;
             }
         }
     </style>
@@ -392,12 +540,13 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">Shruti Kumari</div>
+                <div class="logo">Shruti <span>Kumari</span></div>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="#publications">Publications</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -409,10 +558,11 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <!-- Replace with your photo file name like 'shruti.jpg' when ready -->
-            <img src="WhatsApp Image 2025-10-05 at 23.11.32_daeeecef.jpg" alt="Shruti Kumari">
-            <h1>Aspiring Data Scientist</h1>
-            <p>Aspiring Data Scientist with strong analytical, problem-solving, and programming skills. Seeking opportunities to apply data analytics, machine learning, and visualization expertise to drive business insights and decision-making.</p>
+            <!-- Note: Replace 'your-photo.jpg' with your actual image file name -->
+            <img src="WhatsApp Image 2025-10-05 at 23.11.32_daeeecef.jpg" alt="Shruti Kumari" class="hero-img" onerror="this.style.display='none'">
+            <h1>Shruti Kumari</h1>
+            <h2>Assistant Professor | Data Science & AI Researcher</h2>
+            <p>Combining academic teaching with hands-on industry and research experience in machine learning, healthcare analytics, and quantum computing applications.</p>
             <a href="#projects" class="btn">View My Work</a>
         </div>
     </section>
@@ -423,42 +573,42 @@
             <h2>About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Hello! I'm Shruti Kumari, currently pursuing M.Tech in Data Science from Amity University, Haryana, with a stellar academic record including a B.Tech in CSE (CGPA: 9.52). I bring 2 years of professional experience as a Project Engineer at Wipro Technologies in the Data Analytics & Intelligence domain.</p>
-                    <p>I’ve further strengthened my expertise through internships at HackTech (Data Analytics) and Wargaming (Web Development), where I worked on churn prediction, Netflix content analysis, and full-stack web applications using Python, Django, and modern data tools.</p>
-                    <p>I am passionate about transforming raw data into strategic insights using Python, SQL, Power BI, Tableau, and cloud platforms like Azure. I also hold certifications in Microsoft Azure Fundamentals, Incorta, and YugabyteDB.</p>
+                    <p>Hello! I am an Assistant Professor and AI Researcher with a strong background in Data Science and Computer Science. I am currently pursuing my M.Tech in Data Science from Amity University, Haryana (CGPA: 9.33), building upon my B.Tech in CSE (CGPA: 9.52).</p>
+                    <p>With over 2+ years of combined industry and academic experience, I have worked as a Project Engineer at Wipro Technologies, and completed impactful internships at HackTech and the Wargaming Development Center (Indian Army). My passion lies in mentoring students, simplifying complex technical concepts, and translating raw data into actionable strategic insights.</p>
+                    <p>My current research focuses on the intersection of Classical and Quantum Machine Learning, particularly in healthcare analytics, with accepted publications in reputed Springer conferences and books.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" style="background-color: #f8f9fa;">
+    <section id="skills" style="background-color: #f1f3f5;">
         <div class="container">
-            <h2>My Skills</h2>
+            <h2>Technical & Teaching Skills</h2>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3>Programming</h3>
-                    <p>Python, R, C, C++, Core Java</p>
+                    <h3><i class="fas fa-code"></i> Programming</h3>
+                    <p>Python, R, SQL, HTML, CSS, Django, Kotlin, XML</p>
                 </div>
                 <div class="skill-card">
-                    <h3>Data Science & Analytics</h3>
-                    <p>Data Preprocessing, EDA, Statistical Analysis, Machine Learning (Basic)</p>
+                    <h3><i class="fas fa-brain"></i> Data Science & AI</h3>
+                    <p>Machine Learning, EDA, Statistical Analysis, Qiskit (Quantum ML), Predictive Modeling</p>
                 </div>
                 <div class="skill-card">
-                    <h3>Databases</h3>
-                    <p>SQL, PostgreSQL, PL/SQL, YugabyteDB</p>
+                    <h3><i class="fas fa-database"></i> Databases</h3>
+                    <p>PostgreSQL, SQL, YugabyteDB, Database Management Systems (DBMS)</p>
                 </div>
                 <div class="skill-card">
-                    <h3>Visualization Tools</h3>
-                    <p>Tableau, Power BI, Incorta Analytics</p>
+                    <h3><i class="fas fa-chart-bar"></i> Visualization</h3>
+                    <p>Power BI, Matplotlib, Seaborn, Pandas</p>
                 </div>
                 <div class="skill-card">
-                    <h3>Web Technologies</h3>
-                    <p>HTML, CSS, JavaScript, Bootstrap, Django</p>
+                    <h3><i class="fas fa-chalkboard-teacher"></i> Teaching Skills</h3>
+                    <p>Curriculum Development, Student Mentoring, Simplifying Complex Concepts, Academic Presentation</p>
                 </div>
                 <div class="skill-card">
-                    <h3>Cloud & Certifications</h3>
-                    <p>Microsoft Azure Fundamentals, NPTEL Data Analytics</p>
+                    <h3><i class="fas fa-certificate"></i> Certifications</h3>
+                    <p>Microsoft Azure (AZ-900), NPTEL Data Analytics, Incorta Essentials</p>
                 </div>
             </div>
         </div>
@@ -467,42 +617,87 @@
     <!-- Projects Section -->
     <section id="projects">
         <div class="container">
-            <h2>Featured Projects & Trainings</h2>
+            <h2>Featured Projects & Research</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-img">Online Voting System</div>
+                    <div class="project-header">Research Project</div>
                     <div class="project-content">
-                        <h3>Online Voting System</h3>
-                        <p>Developed a secure web-based voting platform using PHP, SQL, and frontend technologies.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">Bootstrap</span>
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">SQL</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img">Language Translator & CMS</div>
-                    <div class="project-content">
-                        <h3>Language Translator & CMS</h3>
-                        <p>Built a desktop application using Python and Tkinter GUI for content management and translation.</p>
+                        <h3>Quantum vs Classical ML for Breast Cancer Detection</h3>
+                        <p>Developed a comparative framework analyzing breast cancer detection using classical ML (Logistic Regression, SVM) and quantum ML approaches using Qiskit.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Tkinter</span>
+                            <span class="tech-tag">Qiskit</span>
+                            <span class="tech-tag">Scikit-Learn</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--accent); font-weight: 600;"><i class="fas fa-check-circle"></i> Paper accepted at ICDAM 2026</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">Data Analytics</div>
+                    <div class="project-content">
+                        <h3>Tele Customer Churn Analysis</h3>
+                        <p>Analyzed churn patterns in the telecom sector. Identified ~26.5% churn rate, highlighting month-to-month contracts and senior citizens as highest-risk segments.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Seaborn</span>
+                        </div>
+                        <a href="https://github.com/shruti-kumari620/churn_analysis" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">Web Development</div>
+                    <div class="project-content">
+                        <h3>Online Voting System</h3>
+                        <p>Designed and developed a secure web-based voting platform. Implemented robust database management and user authentication features.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">DBMS</span>
+                            <span class="tech-tag">System Design</span>
                         </div>
                     </div>
                 </div>
+
                 <div class="project-card">
-                    <div class="project-img">Food Delivery App</div>
+                    <div class="project-header">Mobile Development</div>
                     <div class="project-content">
                         <h3>Food Delivery Application</h3>
-                        <p>Designed a mobile app prototype during Android development training.</p>
+                        <p>Designed and developed a mobile application prototype, serving as a practical example for teaching mobile app development concepts.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Kotlin</span>
                             <span class="tech-tag">XML</span>
+                            <span class="tech-tag">Android Studio</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" style="background-color: #f1f3f5;">
+        <div class="container">
+            <h2>Publications</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header" style="background-color: var(--accent);">Conference Paper (Presented)</div>
+                    <div class="project-content">
+                        <h3>Performance Analysis of Classical ML Techniques for Early-Stage Breast Cancer Prediction</h3>
+                        <p><strong>Authors:</strong> Kumari, S., Gulia, S., & Singh, G. (2026)</p>
+                        <p><strong>Venue:</strong> 43rd National Conference on AI Driven Sustainable Development, Tecnia Institute of Advanced Studies.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header" style="background-color: var(--accent);">Book Chapter (Accepted)</div>
+                    <div class="project-content">
+                        <h3>AI-Assisted Quantum Threat Detection and Risk Modeling for Post-Quantum Cybersecurity</h3>
+                        <p><strong>Authors:</strong> Kumar, N., Sharma, S., & Kumari, S. (2026)</p>
+                        <p><strong>Venue:</strong> In <em>Quantum Computing for Cybersecurity: AI, Blockchain Integration and Current Technical Frameworks</em>, Springer.</p>
                     </div>
                 </div>
             </div>
@@ -510,43 +705,61 @@
     </section>
 
     <!-- Experience & Education Section -->
-    <section id="experience" style="background-color: #f8f9fa;">
+    <section id="experience">
         <div class="container">
-            <h2>Education & Experience</h2>
+            <h2>Experience & Education</h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <h3>Intern – Web Development</h3>
-                        <p class="timeline-date">Aug 2025 – Present | Wargaming Development Center</p>
-                        <p>Developing and maintaining web applications using Python, Django, HTML, and CSS. Collaborating on responsive and scalable websites.</p>
+                        <h3>Assistant Professor</h3>
+                        <h4>Global Institute of Technology & Management (GITM), Gurugram</h4>
+                        <p class="timeline-date">Jul 2024 – Present</p>
+                        <p>Teaching UG/PG courses in CS, AI, ML, and Python. Mentoring students on research papers and developing AI/ML curriculum aligned with industry practices.</p>
                     </div>
                 </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>AI Research Intern</h3>
+                        <h4>Wargaming Development Center, Indian Army</h4>
+                        <p class="timeline-date">Aug 2025 – Oct 2025</p>
+                        <p>Developed web applications using Python and Django. Assisted in debugging and explaining complex development concepts.</p>
+                    </div>
+                </div>
+
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>Data Analyst Intern</h3>
-                        <p class="timeline-date">Jun 2025 – Jul 2025 | HackTech</p>
-                        <p>Performed Churn Analysis and Netflix Titles Analysis using Python, SQL, and Power BI/Tableau to derive business insights.</p>
+                        <h4>HackTech (Remote)</h4>
+                        <p class="timeline-date">Jun 2025 – Jul 2025</p>
+                        <p>Built data pipelines (EDA, cleaning, modeling) using Python & SQL. Created Power BI dashboards for actionable business insights.</p>
                     </div>
                 </div>
+
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>Project Engineer</h3>
-                        <p class="timeline-date">2022 – 2024 | Wipro Technologies</p>
-                        <p>Worked in WEF – Data Analytics & Intelligence. Gained hands-on experience with PostgreSQL, PL/SQL, YugabyteDB, Incorta, and Azure.</p>
+                        <h4>Wipro Technologies</h4>
+                        <p class="timeline-date">May 2022 – Aug 2024</p>
+                        <p>Worked on data analytics and database systems. Applied SQL and analytics tools in real-world business scenarios.</p>
                     </div>
                 </div>
+
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>M.Tech in Data Science</h3>
-                        <p class="timeline-date">Pursuing | Amity University, Haryana</p>
-                        <p>Score: 89.3%</p>
+                        <h4>Amity University, Haryana</h4>
+                        <p class="timeline-date">Aug 2024 – Jun 2026</p>
+                        <p>CGPA: 9.33 / 10</p>
                     </div>
                 </div>
+
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <h3>B.Tech in CSE</h3>
-                        <p class="timeline-date">Amity University, Patna</p>
-                        <p>CGPA: 9.52/10</p>
+                        <h3>B.Tech in Computer Science & Engineering</h3>
+                        <h4>Amity University, Patna</h4>
+                        <p class="timeline-date">Aug 2018 – May 2022</p>
+                        <p>CGPA: 9.52 / 10</p>
                     </div>
                 </div>
             </div>
@@ -554,44 +767,49 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
+    <section id="contact" style="background-color: #f1f3f5;">
         <div class="container">
             <h2>Get In Touch</h2>
             <div class="contact-container">
                 <div class="contact-info">
                     <h3>Contact Information</h3>
+                    <p style="margin-bottom: 25px; color: #555;">I am always open to discussing new research collaborations, teaching opportunities, or data science projects. Feel free to reach out!</p>
+                    
                     <div class="contact-detail">
-                        <i>📧</i>
-                        <span>shrutirs953@gmail.com</span>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:shrutirs953@gmail.com">shrutirs953@gmail.com</a>
                     </div>
                     <div class="contact-detail">
-                        <i>📱</i>
-                        <span>+91-**********</span>
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+91620605307">+91-620605307</a>
                     </div>
                     <div class="contact-detail">
-                        <i>🔗</i>
-                        <span><a href="https://www.linkedin.com/in/shruti-kumari-bb77b7216" style="color: var(--accent);">LinkedIn</a> | <a href="</div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Gurugram, Haryana, India</span>
                     </div>
-                    <div class="contact-detail">
-                        <i>📍</i>
-                        <span>gurugram, haryana, India</span>
+
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/shruti-kumari024" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/shruti-kumari620" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:shrutirs953@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
+
                 <div class="contact-form">
-                    <form>
+                    <form action="mailto:shrutirs953@gmail.com" method="post" enctype="text/plain">
                         <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
+                            <input type="text" name="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
+                            <input type="email" name="email" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Subject">
+                            <input type="text" name="subject" placeholder="Subject" required>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Your Message" required></textarea>
+                            <textarea name="message" placeholder="Your Message" required></textarea>
                         </div>
-                        <button type="submit" class="btn">Send Message</button>
+                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -601,7 +819,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Shruti Kumari. All Rights Reserved.</p>
+            <p>&copy; 2026 Shruti Kumari. All Rights Reserved.</p>
         </div>
     </footer>
 
